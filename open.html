@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SP Open WTA - Guia do Evento</title>
+
+    <style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+ 
+
+        body {
+
+            font-family: 'Arial', sans-serif;
+
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+
+            color: #333;
+
+            line-height: 1.6;
+
+        }
+
+ 
+
+        .header {
+
+            background: linear-gradient(135deg, #2c2c2c 0%, #3a3a3a 100%);
+
+            padding: 20px;
+
+            text-align: center;
+
+            box-shadow: 0 4px 20px rgba(44, 44, 44, 0.3);
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+ 
+
+        .header::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: -50%;
+
+            left: -50%;
+
+            width: 200%;
+
+            height: 200%;
+
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>') repeat;
+
+            animation: rotate 20s linear infinite;
+
+            pointer-events: none;
+
+        }
+
+ 
+
+        @keyframes rotate {
+
+            from { transform: rotate(0deg); }
+
+            to { transform: rotate(360deg); }
+
+        }
+
+ 
+
+        .logo {
+
+            width: 80px;
+
+            height: 80px;
+
+            margin: 0 auto 15px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+ 
+
+        .logo img {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 50%;
+
+        }
+
+ 
+
+        .header h1 {
+
+            color: white;
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+            position: relative;
+
+            z-index: 2;
+
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+
+        }
+
+ 
+
+        .header p {
+
+            color: rgba(255,255,255,0.9);
+
+            font-size: 16px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+ 
+
+        .container {
+
+            max-width: 400px;
+
+            margin: 0 auto;
+
+            padding: 20px;
+
+        }
+
+ 
+
+        .accordion-item {
+
+            background: white;
+
+            margin-bottom: 12px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+            overflow: hidden;
+
+            transition: all 0.3s ease;
+
+        }
+
+ 
+
+        .accordion-item:hover {
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+
+            transform: translateY(-2px);
+
+        }
+
+ 
+
+        .accordion-header {
+
+            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+
+            color: white;
+
+            padding: 18px 20px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            font-weight: bold;
+
+            font-size: 16px;
+
+            transition: all 0.3s ease;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+ 
+
+        .accordion-header::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+
+            left: -100%;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+
+            transition: left 0.5s;
+
+        }
+
+ 
+
+        .accordion-header:hover::before {
+
+            left: 100%;
+
+        }
+
+ 
+
+        .accordion-icon {
+
+            width: 24px;
+
+            height: 24px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: rgba(255,255,255,0.2);
+
+            border-radius: 50%;
+
+            transition: transform 0.3s ease;
+
+        }
+
+ 
+
+        .accordion-icon::after {
+
+            content: '+';
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+        }
+
+ 
+
+        .accordion-item.active .accordion-icon {
+
+            transform: rotate(45deg);
+
+        }
+
+ 
+
+        .accordion-content {
+
+            max-height: 0;
+
+            overflow: hidden;
+
+            transition: max-height 0.3s ease;
+
+            background: #fafafa;
+
+        }
+
+ 
+
+        .accordion-item.active .accordion-content {
+
+            max-height: 500px;
+
+        }
+
+ 
+
+        .accordion-links {
+
+            padding: 0;
+
+        }
+
+ 
+
+        .accordion-links a {
+
+            display: block;
+
+            padding: 15px 20px;
+
+            color: #555;
+
+            text-decoration: none;
+
+            border-bottom: 1px solid #eee;
+
+            transition: all 0.3s ease;
+
+            position: relative;
+
+        }
+
+ 
+
+        .accordion-links a:last-child {
+
+            border-bottom: none;
+
+        }
+
+ 
+
+        .accordion-links a:hover {
+
+            background: #8a9196;
+
+            color: white;
+
+            padding-left: 30px;
+
+        }
+
+ 
+
+        .accordion-links a::before {
+
+            content: '→';
+
+            position: absolute;
+
+            left: 20px;
+
+            opacity: 0;
+
+            transition: opacity 0.3s ease;
+
+        }
+
+ 
+
+        .accordion-links a:hover::before {
+
+            opacity: 1;
+
+        }
+
+ 
+
+        .footer {
+
+            text-align: center;
+
+            padding: 30px 20px;
+
+            color: #666;
+
+            font-size: 14px;
+
+            background: white;
+
+            margin-top: 30px;
+
+            border-radius: 15px 15px 0 0;
+
+        }
+
+ 
+
+        .tennis-ball {
+
+            width: 30px;
+
+            height: 30px;
+
+            background: #4CAF50;
+
+            border-radius: 50%;
+
+            position: relative;
+
+            margin: 0 auto 10px;
+
+        }
+
+ 
+
+        .tennis-ball::before,
+
+        .tennis-ball::after {
+
+            content: '';
+
+            position: absolute;
+
+            width: 100%;
+
+            height: 2px;
+
+            background: white;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+        }
+
+ 
+
+        .tennis-ball::before {
+
+            transform: translateY(-50%) rotate(45deg);
+
+        }
+
+ 
+
+        .tennis-ball::after {
+
+            transform: translateY(-50%) rotate(-45deg);
+
+        }
+
+ 
+
+        @media (max-width: 480px) {
+
+            .container {
+
+                padding: 15px;
+
+            }
+
+           
+
+            .header h1 {
+
+                font-size: 24px;
+
+            }
+
+           
+
+            .header p {
+
+                font-size: 14px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="header">
+
+        <img src="SPOPEN_Logo Horizontal_Colorido.png" alt="SP Open Logo" style="width: auto; height: 60px;">
+
+
+    </div>
+
+ 
+
+    <div class="container">
+
+        <div class="accordion-item">
+
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+
+                <span>SPOPEN – 1ª edição BEM-VINDOS</span>
+
+                <div class="accordion-icon"></div>
+
+            </div>
+
+            <div class="accordion-content">
+
+                <div class="accordion-links">
+
+                    <a href="#historico">Histórico</a>
+
+                    <a href="#jogadoras">Jogadoras</a>
+
+                    <a href="#trofeu">Troféu</a>
+
+                    <a href="#poster">Poster</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+ 
+
+        <div class="accordion-item">
+
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+
+                <span>PROGRAMAÇÃO</span>
+
+                <div class="accordion-icon"></div>
+
+            </div>
+
+            <div class="accordion-content">
+
+                <div class="accordion-links">
+
+                    <a href="#mapa">Mapa</a>
+
+                    <a href="#agenda">Agenda</a>
+
+                    <a href="#ordem">Ordem</a>
+
+                    <a href="#chaves">Chaves</a>
+
+                    <a href="#homenagem">Homenagem</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+ 
+
+        <div class="accordion-item">
+
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+
+                <span>REVISTA SP OPEN</span>
+
+                <div class="accordion-icon"></div>
+
+            </div>
+
+            <div class="accordion-content">
+
+                <div class="accordion-links">
+
+                    <a href="#revista">Acessar Revista Digital</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+ 
+
+        <div class="accordion-item">
+
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+
+                <span>INICIATIVAS</span>
+
+                <div class="accordion-icon"></div>
+
+            </div>
+
+            <div class="accordion-content">
+
+                <div class="accordion-links">
+
+                    <a href="#projetos-sociais">Apoio a projetos sociais</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+ 
+
+        <div class="accordion-item">
+
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+
+                <span>ESPAÇO BOULEVARD</span>
+
+                <div class="accordion-icon"></div>
+
+            </div>
+
+            <div class="accordion-content">
+
+                <div class="accordion-links">
+
+                    <a href="#o-espaco">O espaço</a>
+
+                    <a href="#gastronomia">Gastronomia</a>
+
+                    <a href="#atracoes">Atrações</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+ 
+
+        <div class="accordion-item">
+
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+
+                <span>SERVIÇOS</span>
+
+                <div class="accordion-icon"></div>
+
+            </div>
+
+            <div class="accordion-content">
+
+                <div class="accordion-links">
+
+                    <a href="#como-chegar">Como chegar</a>
+
+                    <a href="#cartao-eventim">Cartão eventim.pass</a>
+
+                    <a href="#ouvidoria">Ouvidoria</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+ 
+
+    <div class="footer">
+
+        <div class="tennis-ball"></div>
+
+        <p>SP Open WTA - 1ª Edição<br>
+
+        São Paulo, Brasil 2025</p>
+
+    </div>
+
+ 
+
+    <script>
+
+        function toggleAccordion(header) {
+
+            const item = header.parentElement;
+
+            const isActive = item.classList.contains('active');
+
+           
+
+            // Fecha todos os outros accordions
+
+            document.querySelectorAll('.accordion-item').forEach(i => {
+
+                i.classList.remove('active');
+
+            });
+
+           
+
+            // Se não estava ativo, ativa este
+
+            if (!isActive) {
+
+                item.classList.add('active');
+
+            }
+
+        }
+
+ 
+
+        // Adiciona efeito de parallax suave no header
+
+        window.addEventListener('scroll', () => {
+
+            const scrolled = window.pageYOffset;
+
+            const header = document.querySelector('.header');
+
+            header.style.transform = `translateY(${scrolled * 0.3}px)`;
+
+        });
+
+ 
+
+        // Animação de entrada dos items
+
+        const observerOptions = {
+
+            threshold: 0.1,
+
+            rootMargin: '0px 0px -50px 0px'
+
+        };
+
+ 
+
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.style.opacity = '1';
+
+                    entry.target.style.transform = 'translateY(0)';
+
+                }
+
+            });
+
+        }, observerOptions);
+
+ 
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const items = document.querySelectorAll('.accordion-item');
+
+            items.forEach((item, index) => {
+
+                item.style.opacity = '0';
+
+                item.style.transform = 'translateY(20px)';
+
+                item.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+
+                observer.observe(item);
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
